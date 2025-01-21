@@ -12,9 +12,15 @@ permissions:
   id-token: write
   actions: write
   repository-projects: write
+  deployments: write
+  statuses: write
 
 jobs:
   build-and-test:
+    permissions:
+      pages: write
+      id-token: write
+      deployments: write
     runs-on: ubuntu-latest
     
     steps:
