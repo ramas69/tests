@@ -7,7 +7,7 @@ on:
     branches: [ main ]
 
 permissions:
-  contents: read
+  contents: write
   pages: write
   id-token: write
   actions: write
@@ -18,7 +18,7 @@ permissions:
 jobs:
   build-and-test:
     permissions:
-      contents: read
+      contents: write
       pages: write
       id-token: write
       deployments: write
@@ -51,6 +51,15 @@ jobs:
     
     - name: Build Storybook
       run: npm run build-storybook
+
+    - name: Initialize Pages
+      run: |
+        gh api --method PUT /repos/${{ github.repository }}/pages \
+        --field source_branch=main \
+        --field source_path=/ \
+        --field build_type=workflow
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
     - name: Configure Pages
       uses: actions/configure-pages@v4
