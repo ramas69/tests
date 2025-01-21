@@ -10,6 +10,8 @@ permissions:
   contents: read
   pages: write
   id-token: write
+  actions: write
+  repository-projects: write
 
 jobs:
   build-and-test:
