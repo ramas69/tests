@@ -28,8 +28,7 @@ jobs:
     - name: Checkout repository
       uses: actions/checkout@v4
       with:
-        repository: ${{ github.repository }}
-        token: ${{ secrets.PAT_TOKEN }}
+        token: ${{ github.token }}
         fetch-depth: 1
     
     - name: Setup Node.js
