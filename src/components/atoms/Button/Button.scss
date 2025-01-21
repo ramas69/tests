@@ -1,0 +1,78 @@
+@use "sass:color";
+
+// Variables
+$primary-color: #000E9C;
+$secondary-color: #00A4A7;
+$danger-color: #E85A47;
+
+// Base button styles
+.button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.75rem 1.5rem;
+    border: none;
+    border-radius: 4px;
+    font-size: 1rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s ease-in-out;
+
+    &:focus {
+        outline: 2px solid currentColor;
+        outline-offset: 2px;
+    }
+
+    &:disabled {
+        opacity: 0.6;
+        cursor: not-allowed;
+    }
+}
+
+// Variant styles
+.primary {
+    background-color: $primary-color;
+    color: white;
+
+    &:hover {
+        background-color: color.adjust($primary-color, $lightness: -10%);
+    }
+
+    &:active {
+        background-color: color.adjust($primary-color, $lightness: -15%);
+    }
+}
+
+.secondary {
+    background-color: $secondary-color;
+    color: white;
+
+    &:hover {
+        background-color: color.adjust($secondary-color, $lightness: -10%);
+    }
+
+    &:active {
+        background-color: color.adjust($secondary-color, $lightness: -15%);
+    }
+}
+
+.danger {
+    background-color: $danger-color;
+    color: white;
+
+    &:hover {
+        background-color: color.adjust($danger-color, $lightness: -10%);
+    }
+
+    &:active {
+        background-color: color.adjust($danger-color, $lightness: -15%);
+    }
+}
+
+// Responsive adjustments
+@media (max-width: 768px) {
+    .button {
+        padding: 0.5rem 1rem;
+        font-size: 0.875rem;
+    }
+}
